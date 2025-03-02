@@ -1,3 +1,459 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+}
+
+/* Custom focus styles */
+input:focus-visible,
+textarea:focus-visible,
+button:focus-visible {
+  @apply outline-none ring-2 ring-primary/20 ring-offset-2 ring-offset-background transition-all;
+}
+
+/* Custom scrollbar for a more elegant look */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-secondary/50;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-muted-foreground/30 rounded-full transition-colors hover:bg-muted-foreground/50;
+}
+
+/* Glass effects */
+.glass {
+  @apply bg-white/70 backdrop-blur-lg backdrop-saturate-150 border border-white/20;
+}
+
+.dark .glass {
+  @apply bg-black/30 backdrop-blur-lg backdrop-saturate-150 border border-white/10;
+}
+
+.glass-card {
+  @apply bg-white/10 backdrop-blur-lg border border-white/10 shadow-lg;
+}
+
+.dark .glass-card {
+  @apply bg-black/20 backdrop-blur-lg border border-white/5;
+}
+
+.prism-card {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.05)
+  );
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.18);
+}
+
+.dark .prism-card {
+  background: linear-gradient(
+    135deg,
+    rgba(20, 20, 20, 0.7),
+    rgba(10, 10, 10, 0.8)
+  );
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+}
+
+.shadow-neon {
+  box-shadow: 0 0 15px rgba(120, 118, 255, 0.1),
+    0 0 30px rgba(120, 118, 255, 0.05), 0 0 50px rgba(120, 118, 255, 0.025);
+}
+
+/* Video element styling */
+video {
+  @apply rounded-lg shadow-lg;
+}
+
+/* Video container with elegant loading state */
+.video-container {
+  @apply relative overflow-hidden rounded-xl bg-black/5;
+}
+
+.video-container.loading::before {
+  content: "";
+  @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-pulse;
+}
+
+.dark .video-container.loading::before {
+  @apply bg-gradient-to-r from-transparent via-black/20 to-transparent;
+}
+
+.video-neo {
+  @apply bg-black/90 backdrop-filter backdrop-blur-sm;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+/* Input focus ring animation */
+@keyframes focus-ring-expand {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1);
+  }
+  100% {
+    box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.input-focus-animation:focus-within {
+  animation: focus-ring-expand 0.3s ease-out forwards;
+}
+
+.dark .input-focus-animation:focus-within {
+  animation: focus-ring-expand 0.3s ease-out forwards;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
+}
+
+/* Button animations */
+.button-hover-effect {
+  @apply relative overflow-hidden;
+}
+
+.button-hover-effect::after {
+  content: "";
+  @apply absolute inset-0 bg-white/0 transition-colors duration-300;
+}
+
+.button-hover-effect:hover::after {
+  @apply bg-white/10;
+}
+
+.dark .button-hover-effect:hover::after {
+  @apply bg-white/5;
+}
+
+/* Advanced animations */
+@keyframes ping-once {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(0.9);
+  }
+}
+
+@keyframes entrance-reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes entrance-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes reveal {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes bounce-slow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Add new animation classes */
+.animate-ping-once {
+  animation: ping-once 0.6s cubic-bezier(0, 0, 0.2, 1);
+}
+
+.animate-float-slow {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-twinkle {
+  animation: twinkle 2s ease-in-out infinite;
+}
+
+.animate-entrance-reveal {
+  animation: entrance-reveal 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.animate-entrance-up {
+  animation: entrance-up 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.animate-reveal {
+  animation: reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-gradient-shift {
+  animation: gradient-shift 4s ease infinite;
+  background-size: 200% 200%;
+}
+
+.animate-pulse-slow {
+  animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 3s infinite;
+}
+
+/* Floating orbs animation */
+.floating-orbs .orb {
+  animation: float 20s ease-in-out infinite;
+}
+
+/* Background patterns */
+.bg-grid-pattern {
+  background-image: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.05) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+.bg-dots-pattern {
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.1) 1px,
+    transparent 1px
+  );
+  background-size: 20px 20px;
+}
+
+.bg-waves-pattern {
+  background: linear-gradient(135deg, #0000000d 25%, transparent 25%) -10px 0,
+    linear-gradient(225deg, #0000000d 25%, transparent 25%) -10px 0,
+    linear-gradient(315deg, #0000000d 25%, transparent 25%),
+    linear-gradient(45deg, #0000000d 25%, transparent 25%);
+  background-size: 20px 20px;
+}
+
+.bg-hexagon-pattern {
+  background-color: transparent;
+  background-image: linear-gradient(
+      30deg,
+      rgba(255, 255, 255, 0.05) 12%,
+      transparent 12.5%,
+      transparent 87%,
+      rgba(255, 255, 255, 0.05) 87.5%,
+      rgba(255, 255, 255, 0.05)
+    ),
+    linear-gradient(
+      150deg,
+      rgba(255, 255, 255, 0.05) 12%,
+      transparent 12.5%,
+      transparent 87%,
+      rgba(255, 255, 255, 0.05) 87.5%,
+      rgba(255, 255, 255, 0.05)
+    ),
+    linear-gradient(
+      30deg,
+      rgba(255, 255, 255, 0.05) 12%,
+      transparent 12.5%,
+      transparent 87%,
+      rgba(255, 255, 255, 0.05) 87.5%,
+      rgba(255, 255, 255, 0.05)
+    ),
+    linear-gradient(
+      150deg,
+      rgba(255, 255, 255, 0.05) 12%,
+      transparent 12.5%,
+      transparent 87%,
+      rgba(255, 255, 255, 0.05) 87.5%,
+      rgba(255, 255, 255, 0.05)
+    ),
+    linear-gradient(
+      60deg,
+      rgba(255, 255, 255, 0.05) 25%,
+      transparent 25.5%,
+      transparent 75%,
+      rgba(255, 255, 255, 0.05) 75%,
+      rgba(255, 255, 255, 0.05)
+    ),
+    linear-gradient(
+      60deg,
+      rgba(255, 255, 255, 0.05) 25%,
+      transparent 25.5%,
+      transparent 75%,
+      rgba(255, 255, 255, 0.05) 75%,
+      rgba(255, 255, 255, 0.05)
+    );
+  background-size: 40px 70px;
+}
+
+.bg-circuit-pattern {
+  background-image: radial-gradient(
+      rgba(255, 255, 255, 0.1) 2px,
+      transparent 2px
+    ),
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px, 40px 40px, 40px 40px;
+}
+
+/* Frame corner accents */
+.frame-corners {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+}
+
+/* Cosmic container */
+.cosmic-container {
+  background-color: #0c0c16;
+  background-image: linear-gradient(135deg, #0c0c16 0%, #13131f 100%);
+  transition: background-color 1s ease;
+}
