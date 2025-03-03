@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "@gptscript-ai/gptscript": "^0.9.5",
+    "cors": "^2.8.5",
+    "express": "^4.21.2"
+  },
+  "name": "backend",
+  "module": "index.js",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}
