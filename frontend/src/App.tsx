@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
-import { Info, Play, Film, Sparkles, Atom } from "lucide-react";
+import { Info, Film, Sparkles, Atom } from "lucide-react";
 import { useVideoPreview } from "./hooks/useVideoPreview";
 import VideoInput from "./components/VideoInput";
 import VideoPreview from "./components/VideoPreview";
 
 const Index = () => {
-  const { videoUrl, isLoading, previewVideo, getRandomExampleVideo } =
-    useVideoPreview();
+  const { videoUrl, isLoading, previewVideo } = useVideoPreview();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {

@@ -14,7 +14,6 @@ interface VideoInputProps {
 const VideoInput: React.FC<VideoInputProps> = ({
   onSubmit,
   isLoading = false,
-  className,
   style,
 }) => {
   const [url, setUrl] = useState("");
