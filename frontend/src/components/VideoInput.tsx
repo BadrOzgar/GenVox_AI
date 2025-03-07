@@ -52,7 +52,7 @@ const VideoInput: React.FC<VideoInputProps> = ({
         disabled={isLoading || !url.trim()}
         className="w-full h-12 rounded-lg button-hover-effect transition-all duration-300 ease-in-out bg-primary hover:bg-primary/90 font-medium text-primary-foreground"
       >
-        <span className="flex items-center gap-2 transition-transform duration-300">
+        <span className="flex items-center gap-2 transition-transform duration-300 cursor-pointer">
           {/*   <Play size={16} className="relative" /> */}
           <span>Preview Video</span>
         </span>
