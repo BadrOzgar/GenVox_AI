@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-
 import { Info, Film, Sparkles, Atom } from "lucide-react";
 import { useVideoPreview } from "./hooks/useVideoPreview";
 import VideoInput from "./components/VideoInput";
