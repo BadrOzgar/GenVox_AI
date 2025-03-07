@@ -21,7 +21,7 @@ const VideoInput: React.FC<VideoInputProps> = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     alert(
-      "We reached the token limit provided by OpenAI. We will update them as soon as possible"
+      "We reached the tokens limit provided by OpenAI. We will update them as soon as possible"
     );
     e.preventDefault();
     if (url.trim()) {
