@@ -1,3 +1,4 @@
+import { Play } from "lucide-react";
 import React, { useState } from "react";
 /* import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -19,6 +20,9 @@ const VideoInput: React.FC<VideoInputProps> = ({
   const [url, setUrl] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
+    alert(
+      "We reached the token limit provided by OpenAI. We will update them as soon as possible"
+    );
     e.preventDefault();
     if (url.trim()) {
       onSubmit(url);
@@ -41,7 +45,7 @@ const VideoInput: React.FC<VideoInputProps> = ({
             value={url}
             onChange={(e) => setUrl(e.target.value)}
             placeholder="https://example.com/video.mp4"
-            className="pr-4 h-12 border-muted/40 rounded-lg"
+            className="pr-4 h-12 border-muted/40 rounded-lg w-full"
             disabled={isLoading}
           />
         </div>
@@ -50,10 +54,10 @@ const VideoInput: React.FC<VideoInputProps> = ({
       <button
         type="submit"
         disabled={isLoading || !url.trim()}
-        className="w-full h-12 rounded-lg button-hover-effect transition-all duration-300 ease-in-out bg-primary hover:bg-primary/90 font-medium text-primary-foreground"
+        className="cursor-pointer w-full h-12 rounded-lg button-hover-effect transition-all duration-300 ease-in-out bg-primary hover:bg-primary/90 font-medium text-primary-foreground"
       >
-        <span className="flex items-center gap-2 transition-transform duration-300 cursor-pointer">
-          {/*   <Play size={16} className="relative" /> */}
+        <span className="flex items-center justify-center gap-2 text-center transition-transform duration-300 cursor-pointer w-full">
+          <Play size={16} className="relative" />
           <span>Preview Video</span>
         </span>
       </button>

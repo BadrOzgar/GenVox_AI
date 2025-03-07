@@ -1,6 +1,5 @@
 import { useState } from "react";
-/* import { toast } from '@/components/ui/use-toast';
- */
+
 interface UseVideoPreviewProps {
   onSuccess?: (url: string) => void;
   onError?: (message: string) => void;
